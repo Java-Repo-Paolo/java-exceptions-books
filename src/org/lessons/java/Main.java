@@ -1,10 +1,14 @@
 package org.lessons.java;
 
+import java.io.FileWriter;
+import java.io.IOException;
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class Main {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
         Scanner scanner = new Scanner(System.in);
+
 
         System.out.print("How many books do you want to add? ");
         int addBook = Integer.parseInt(scanner.nextLine());
@@ -35,10 +39,32 @@ public class Main {
 
         }
 
+
+
         for (Book totalBooks : bookLibrary) {
             System.out.println(totalBooks);
         }
 
+        try{
+            FileWriter myWriter = new FileWriter("library.txt");
+            // Scrivi ciascun libro nel file
+            for (Book book : bookLibrary) {
+                myWriter.write("Book: " + "\n");
+                myWriter.write("Titolo: " + book.getTitle() + "\n");
+                myWriter.write("Pagine: " + book.getPages() + "\n");
+                myWriter.write("Autore: " + book.getAuthor() + "\n");
+                myWriter.write("Editore: " + book.getEditor() + "\n");
+                myWriter.write("\n");
+            }
+            myWriter.close();
+        }catch(IOException e){
+            e.printStackTrace();
+        }
+
+
+
         scanner.close();
+
+
     }
 }
