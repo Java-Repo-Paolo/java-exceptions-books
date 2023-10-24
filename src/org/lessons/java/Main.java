@@ -1,2 +1,5 @@
-package org.lessons.java;public class Main {
+package org.lessons.java;
+
+public class Main {
+
 }
